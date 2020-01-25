@@ -39,14 +39,20 @@ Commit your code regularly and use descriptive messages. This helps both you (in
 Demonstrate your understanding of this Sprint's concepts by answering the following free-form questions. Edit this document to include your answers after each question. Make sure to leave a blank line above and below your answer so it is clear and easy to read by your Team Lead.
 
 - [ ] Mention two parts of Express that you learned about this week.
+    I learned that express is actually middleware
+    also express is a frame work for node.js
 
 - [ ] Describe Middleware?
+    middleware are function that have access to request and reponse objects middleware can modify and or stop an action.
 
 - [ ] Describe a Resource?
 
 - [ ] What can the API return to help clients know if a request was successful?
+    status code 200 for ok
 
 - [ ] How can we partition our application into sub-applications?
+    by using middleware routes that point to different end points and by seperating configuration
+    code that is concern with configuration of the server in its own file server.js from code that is only deal with connecting the server witch would be in the index.js file
 
 ## Minimum Viable Product
 
