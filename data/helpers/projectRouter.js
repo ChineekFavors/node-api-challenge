@@ -14,9 +14,10 @@ router.get('/', (req, res) => {
         })
 });
 
+
 router.post('/', (req, res) => {
     const body = req.body;
-    console.log("projectRouter:post:body", body);
+   
    
 
     if((body.name == null )|| (body.name == "")){
@@ -55,5 +56,38 @@ router.delete('/:id', (req,res) =>{
             res.status(500).json({errorMessage: 'there was a problem deleting from the database'})
         })
 })
+
+router.put('/:id', (req, res) =>{
+    const id = req.params.id;
+    const body = req.body;
+    console.log(id,body);
+   if(!id){
+       res.status(404).json({message: 'must provide an id to update to database!'})
+   }
+   
+   if((body.name == null )|| (body.name == "")){
+        res.status(400).json({errorMessage: "please provide name field are require!"});    
+    }
+    if((body.description == null) || (body.description == "")){
+        res.status(400).json({errorMessage: "please provide description field are require!"});
+
+    }
+    if((body.completed == null )|| (body.completed == "")){
+        res.status(400).json({errorMessage: "please provide completed field are require!"});
+
+    }
+  
+    db.update(id, body)
+        .then( updated => {
+            if(updated){
+                res.status(200).json(body);
+            }else {
+                res.status(404).json({message: "The project with the specified ID does not exist."});
+            }
+        })
+        .catch( err => {
+            res.status(500).json({errorMessage: "there was a problem updating to the database!"});
+        })
+});
 
 module.exports = router;
