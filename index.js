@@ -1,3 +1,12 @@
+const server = require('./server.js');
+
+server.get('/', (req, res) => {
+    res.status(200).send('<h1>Node-api-challenge!')
+});
+
+server.listen(4000, () => {console.log('server is listening on port 4000')});
+
+
 /*
 play this: https://www.youtube.com/watch?v=d-diB65scQU
 
